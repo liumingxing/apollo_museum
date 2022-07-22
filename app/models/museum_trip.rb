@@ -1,0 +1,2 @@
+class MuseumTrip < ApplicationRecord
+end

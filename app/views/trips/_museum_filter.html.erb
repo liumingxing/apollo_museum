@@ -1,0 +1,6 @@
+<div class="right m1">
+<%= form_with url: "/museums", remote: true, method: "GET", :class=>"form-inline"  do |form| %>
+  <%= form.text_field 'filter', placeholder: 'city/name/description', :class=>"form-control" %>
+  <%= form.submit 'search', :class=>"btn btn-default" %>
+<% end %>
+</div>

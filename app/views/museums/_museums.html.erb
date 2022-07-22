@@ -1,0 +1,22 @@
+<table class="table table-bordered table-striped">  
+  <tr>
+    <th></th>
+    <th>name</th>
+    <th>state</th>
+    <th>city</th>
+    <th>description</th>
+  </tr>
+  <% @museums.each do |museum| %>
+  <tr>
+      <td><%= check_box_tag "trip[museum_ids][]", museum.id, false,  class: "museum_check_box" %></td>
+      <td><%= museum.name %></td>
+      <td><%= museum.state %></td>
+      <td><%= museum.city %></td>
+      <td><%= museum.description %></td>
+  </tr>
+  <% end %>
+</table>
+
+<div class="center">
+<%= will_paginate @museums, params: {controller: "museums", action: "index"} %>
+</div>

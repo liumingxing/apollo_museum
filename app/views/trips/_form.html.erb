@@ -1,0 +1,49 @@
+
+<h2>Step 1: Select Museums</h2>
+
+<%= render partial: "museum_filter" %>
+
+<%= form_with(model: trip, local: true) do |form| %>
+  <% if trip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
+
+      <ul>
+      <% trip.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div id="museums">
+  </div>
+
+<h2>Step 2: Fill the form</h2>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :trip_day %>
+    <%= form.text_field :trip_day, :html=>{"data-date-format": "dd-mm-yyyy"} %>
+  </div>
+  <div class="actions">
+    <%= form.submit "Save The Trip", :class=>"btn btn-default" %>
+  </div>
+<% end %>
+
+<script>
+jQuery( function() {
+  var today = new Date()
+  var tomorrow = new Date(today)
+  tomorrow.setDate(today.getDate() + 1)
+
+  jQuery("#trip_trip_day" ).datetimepicker({format: 'dd-mm-yyyy', minView: "month", autoclose: true, startDate: tomorrow});
+
+
+  //get museums list with ajax
+  $.ajax({url: "/museums?filter=<%=params[:filter]%>", dataType: "script"})
+  })
+</script>

@@ -1,0 +1,50 @@
+<div class="right m1">
+<%= link_to 'Delete Trip', @trip, class: "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
+<p>
+  <strong>Trip name:</strong>
+  <%= @trip.name %>
+</p>
+
+<p>
+  <strong>Trip day:</strong>
+  <%= @trip.trip_day %>
+</p>
+
+<table class="table table-bordered table-stripped">
+  <tr>
+    <th>museum name</th>
+    <th>location</th>
+    <th>description</th>
+    <th>operation</th>
+  </tr>
+  <% @trip.museums.each do |museum| %>
+  <tr>
+    <td><%= museum.name %></td>
+    <td><%= museum.state %> <%= museum.city %></td>
+    <td><%= museum.description %></td>
+    <td><%= link_to 'Delete', {:action=>"remove_museum_from_trip", id: @trip, museum_id: museum.id}, class: "btn btn-default btn-sm", method: :delete, data: { confirm: 'Are you sure?' }%></td>
+  </tr>
+  <% end %>
+  <tr>
+    <td colspan=3></td>
+    <td><%= link_to 'Add more museums', "javascript:$('#edit_form').toggle();", :class=>"btn btn-default" %></td>
+  </tr>
+</table>
+
+<div id="edit_form" style="display:none">
+
+  <%= render partial: "museum_filter" %>
+
+  <%= form_with( url: {action: "add_museum_to_trip", id: @trip.id}) do |form| %>
+    <div id="museums">
+    </div>
+
+    <%= form.submit "Add selected museums", :class=>"btn btn-default" %>
+  <% end %>
+</div>
+<%= link_to 'Back', trips_path %>
+
+<script>
+$.ajax({url: "/museums?filter=<%=params[:filter]%>", dataType: "script"})
+</script>

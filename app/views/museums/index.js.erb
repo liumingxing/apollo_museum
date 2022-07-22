@@ -1,0 +1,2 @@
+$('#museums').html(decodeURIComponent(atob('<%= Base64.encode64(render partial: 'museums').gsub("\n", "") %>')));
+$.setAjaxPagination();
