@@ -35,7 +35,7 @@ class TripsController < ApplicationController
 
     respond_to do |format|
       if @trip.save
-        format.html { redirect_to action: "index", notice: "Trip was successfully created." }
+        format.html { redirect_to trips_url, notice: "Trip was successfully created." }
         format.json { render :show, status: :created, location: @trip }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -70,6 +70,7 @@ class TripsController < ApplicationController
   def remove_museum_from_trip
     museum = Museum.find(params[:museum_id])
     @trip.museums.delete(museum)
+    @trip.save
     redirect_to trip_url(@trip), notice: "Delete museum from trip sucessfully"
   end
 
@@ -77,6 +78,7 @@ class TripsController < ApplicationController
     for id in params[:trip][:museum_ids]
       @trip.museums << Museum.find(id)
     end
+    @trip.save
     redirect_to trip_url(@trip), notice: "Trip was successfully updated."
   end
 

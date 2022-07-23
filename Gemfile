@@ -6,6 +6,8 @@ ruby '2.6.3'
 gem 'mysql2', '0.4.10'
 gem 'nokogiri', '1.13.7'
 gem 'will_paginate'
+gem "watir", '7.1.0'
+gem "headless"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.7'
