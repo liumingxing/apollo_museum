@@ -3,7 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-gem 'mysql2', '0.4.10'
 gem 'nokogiri', '1.13.7'
 gem 'will_paginate'
 gem "watir", '7.1.0'
