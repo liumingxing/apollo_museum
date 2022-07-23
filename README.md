@@ -1,24 +1,17 @@
-# README
+# This is a test project for apollo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## install in ubuntu
+1. `rvm use 2.6.3`
+2. `bundle install`
+3. `rake db:migrate`
+4. scrab data from curl, `rake scrab_museum`
+5. `rails s`
 
-* Ruby version
+it can also scab data from watir. 100% of museums data will be correctly crabbed.
 
-* System dependencies
+6. install chrome browser and chromedriver in linux, then `rake watir_museum`
 
-* Configuration
+run in docker
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+7. `docker-compose -f docker-compose.yml up`

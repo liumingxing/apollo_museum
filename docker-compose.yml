@@ -1,7 +1,7 @@
 version: '3'
 services:
   museum:
-    image: "museum_apollo"
+    build: . 
     container_name: museum_apollo
-    expose:
-      - "3000"
+    ports:
+     - "3000:3000"
