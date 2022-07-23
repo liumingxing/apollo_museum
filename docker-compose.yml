@@ -1,0 +1,7 @@
+version: '3'
+services:
+  museum:
+    image: "museum_apollo"
+    container_name: museum_apollo
+    expose:
+      - "3000"
