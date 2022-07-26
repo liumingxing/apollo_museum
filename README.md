@@ -61,10 +61,17 @@ Scrab with curl is very simple, but only a small part of data can be scrabbed du
 * [download](https://chromedriver.storage.googleapis.com/index.html) chrome-driver (same version with chrome install in previous step) and put it into a `PATH` directory <br>
 * Then we can execute `rake watir_museum` to 
 
-3. UI & controllers: create trip, shows art museum list, save trip functionality
+3. UI & controllers: create trip, shows art museum list, save trip functionality <br>
+![screenshot](https://raw.githubusercontent.com/liumingxing/apollo_museum/main/public/screenshots/shot1.jpg)  
+Controllers: [TripsController](https://github.com/liumingxing/apollo_museum/blob/main/app/controllers/trips_controller.rb), [MuseumController](https://github.com/liumingxing/apollo_museum/blob/main/app/controllers/museums_controller.rb) <br>
+TripViews: [list](https://github.com/liumingxing/apollo_museum/blob/main/app/views/trips/index.html.erb),  [_form](https://github.com/liumingxing/apollo_museum/blob/main/app/views/trips/_form.html.erb),
+[_museum_filter](https://github.com/liumingxing/apollo_museum/blob/main/app/views/trips/_museum_filter.html.erb) <br>
+MuseumViews: [index](https://github.com/liumingxing/apollo_museum/blob/main/app/views/museums/index.html.erb), [index.js](https://github.com/liumingxing/apollo_museum/blob/main/app/views/museums/index.js.erb), [_museums](https://github.com/liumingxing/apollo_museum/blob/main/app/views/museums/_museums.html.erb)
+
 
 4. paginate to more museums <br>
 Museums are paginating listed in Adding trip page. Paging and filtering are ajaxed.
 
 5. Add a search box to filter museums <br>
-There is a search box in museum list page. Filter by museum's city||name||description
+There is a search box in museum list page. Filter by museum's city||name||description.
+Filter request are complete in ajax mode.
